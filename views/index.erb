@@ -4,17 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/form.css">
     <title>Register App</title>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h1 class="text-center">Hello</h1>
-            <hr>
-            <div class="card-body">
-                
-            </div>
+        <p class="title">Registration</p>
+        <form action="/action_page.php" method="POST">
+            <input type="text" name="phone_number" placeholder="Mobile Number" required>
+            <input type="text" name="first_name" placeholder="First name" required>
+            <input type="text" name="last_name" placeholder="Last name" required>
+            <div class="flex">
+                <select class="select-input" id="month" name="month">
+                    
+                </select>
+                <select class="select-input" id="date" name="date">
+                    
+                </select>
+                <select class="select-input" id="year" name="year">
+                    
+                </select>
+            </div> 
+            <div class="flex">
+                <div class="input-radio">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                </div>
+                <div class="input-radio">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                </div>
+            </div>  
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="submit" value="Register">
+        </form>
         </div>
     </div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script>
+    
+    $( document ).ready(function() {
+       getMonths();
+       getYears();
+    });
+
+    $('select[name=date]').click(function(){
+        checkTotalDay();
+        console.log('hai');
+    });
+
+    function getMonths() {
+        var monthNames = [ "January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December" ];
+        var month = $('select[name=month]');
+        
+        for(var i = 0; i < 12; i++) {
+            month.append("<option value='"+(i+1)+"'>"+monthNames[i]+"</option>");
+        }
+    }
+
+    function getYears() {
+        var year = $('select[name=year]');
+        var currentYear = new Date().getFullYear();
+
+        for (var i = currentYear; i > 1900  ;i--) {
+            year.append("<option value='"+i+"'>"+i+"</option>");
+        }
+    }
+
+    function checkTotalDay() {
+        var year = $('select[name=year]').val();
+        var month = $('select[name=month]').val();
+        var totalDate = 31;
+        if(year !== '' && month !== '') {
+            totalDate = new Date(year, month, 0).getDate();
+        }
+        
+        $('select[name=date]').empty();
+
+        for(var i = 1; i <= totalDate; i++) {
+            $('select[name=date]').append("<option value='"+i+"'>"+i+"</option>");
+        }
+    }
+</script>
 </html>

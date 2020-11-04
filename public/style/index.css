@@ -9,42 +9,10 @@ body{
     justify-content: center;
 }
 
-.card{
-    background-color: #293f4e38;
-    border-radius: 10px;
-    width: 55%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.card-body{
-    padding: 1em;
-}
-
-.btn {
-    border: 1px solid black;
-    border-radius: 2px;
-    padding: 1em;
-    color: black;
-    font-size: 14px;
-    text-decoration: none;
-    margin-right: 1em;
-}
-
-
-.text-center{
-    text-align: center;
-}
-
-.mb-2{
-    margin-bottom: 2em;
-}
-
 .btn:hover{
     cursor: pointer;
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+p.title{
+    font-size: 24px;
 }
