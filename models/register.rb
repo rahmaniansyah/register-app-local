@@ -14,6 +14,8 @@ class Register
     end
 
     def save
-        
+        client = create_db_client
+        client.query("INSERT INTO user (phone_number, first_name, last_name, dob, gender, email) VALUES
+                     ('#{phone_number}', '#{first_name}', '#{last_name}', '#{dob}', '#{gender}', '#{email}')")
     end
 end
