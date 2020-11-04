@@ -1,6 +1,7 @@
+require "sinatra/activerecord"
 require './db/mysql_connector.rb'
 
-class Register
+class User < ActiveRecord::Base
     attr_accessor :id, :phone_number, :first_name, :last_name, :dob, :gender, :email
 
     def initialize (phone_number, first_name, last_name, dob = nil, gender = nil, email)

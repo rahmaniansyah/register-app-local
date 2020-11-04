@@ -1,6 +1,6 @@
-require './models/register'
+require './models/user'
 
-class RegisterController
+class UserController
     
     def index
         renderer = ERB.new(File.read("./views/index.erb"))
@@ -15,7 +15,7 @@ class RegisterController
         gender = params["gender"]
         email = params["email"]
 
-        user = Register.new(phone_number, first_name, last_name, dob, gender, email)
+        user = User.new(phone_number, first_name, last_name, dob, gender, email)
         user.save
 
     end

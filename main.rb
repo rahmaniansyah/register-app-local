@@ -1,17 +1,24 @@
 require 'sinatra'
-require './controllers/register_controller.rb'
+require "sinatra/activerecord"
+require './controllers/user_controller.rb'
 
 get "/" do
-  controller = RegisterController.new
+  controller = UserController.new
   controller.index
+
+  @user = User.all
+
+  puts '----------'
+  puts @user
+  puts '----------'
 end
 
 get "/show" do
-    controller = RegisterController.new
+    controller = UserController.new
     controller.show
 end
 
 post "/" do
-    controller = RegisterController.new
+    controller = UserController.new
     controller.add_user(params)
 end
