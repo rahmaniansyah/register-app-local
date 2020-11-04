@@ -2,23 +2,17 @@ require 'sinatra'
 require "sinatra/activerecord"
 require './controllers/user_controller.rb'
 
-get "/" do
+get "/user-register" do
   controller = UserController.new
   controller.index
 
-  @user = User.all
-
-  puts '----------'
-  puts @user
-  puts '----------'
 end
 
-get "/show" do
-    controller = UserController.new
-    controller.show
-end
-
-post "/" do
-    controller = UserController.new
-    controller.add_user(params)
+post "/user-register" do
+    controller = UserController.new(params)
+    controller.add_user
+    # dob = [params["year"], params["month"], params["date"]].join('-')
+    # controller.add_user(params)
+    # controller.add_user(params["phone_number"], params["first_name"], 
+    #                     params["last_name"], dob, params["gender"], params["email"])
 end
