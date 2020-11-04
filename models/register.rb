@@ -1,4 +1,4 @@
-require './db/psql_connector.rb'
+require './db/mysql_connector.rb'
 
 class Register
     attr_accessor :id, :phone_number, :first_name, :last_name, :dob, :gender, :email
@@ -10,6 +10,10 @@ class Register
         @dob = dob
         @gender = gender
         @email = email
+        
+    end
+
+    def save
         
     end
 end

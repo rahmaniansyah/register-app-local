@@ -11,28 +11,22 @@
     <div class="container">
         <div class="card">
         <p class="title">Registration</p>
-        <form action="/action_page.php" method="POST">
+        <form action="/" method="POST">
             <input type="text" name="phone_number" placeholder="Mobile Number" required>
             <input type="text" name="first_name" placeholder="First name" required>
             <input type="text" name="last_name" placeholder="Last name" required>
             <div class="flex">
-                <select class="select-input" id="month" name="month">
-                    
-                </select>
-                <select class="select-input" id="date" name="date">
-                    
-                </select>
-                <select class="select-input" id="year" name="year">
-                    
-                </select>
+                <select class="select-input" id="month" name="month"></select>
+                <select class="select-input" id="date" name="date"></select>
+                <select class="select-input" id="year" name="year"></select>
             </div> 
             <div class="flex">
                 <div class="input-radio">
-                    <input type="radio" id="male" name="gender" value="male">
+                    <input type="radio" id="male" name="gender" value="m">
                     <label for="male">Male</label><br>
                 </div>
                 <div class="input-radio">
-                    <input type="radio" id="female" name="gender" value="female">
+                    <input type="radio" id="female" name="gender" value="f">
                     <label for="female">Female</label><br>
                 </div>
             </div>  

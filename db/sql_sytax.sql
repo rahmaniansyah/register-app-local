@@ -1,17 +1,13 @@
-CREATE DATABASE register_db;
-
-\l                          -- show list DATABASE
-\c register_db              -- use DATABASE
-
-CREATE TABLE public."user" (
-    id integer NOT NULL DEFAULT nextval('user_id_seq'::regclass),
-    phone_number character(15) COLLATE pg_catalog."default" NOT NULL,
-    first_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    last_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+CREATE TABLE user (
+    id INT NOT NULL auto_increment,
+    phone_number char(15) NOT NULL UNIQUE,
+    first_name varchar(100) NOT NULL,
+    last_name varchar(100) NOT NULL,
     dob date,
-    gender character(1) COLLATE pg_catalog."default",
-    email character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT user_pkey PRIMARY KEY (id),
-    CONSTRAINT email_unique UNIQUE (email),
-    CONSTRAINT phone_number_unique UNIQUE (phone_number)
+    gender char(1),
+    email varchar(100) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
 );
+
+INSERT INTO user (phone_number, first_name, last_name, email)
+VALUES ('62812345678', 'rahma', 'putri','rahmaputri13@gmail.com');
