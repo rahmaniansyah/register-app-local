@@ -10,6 +10,14 @@
 <body>
     <div class="container">
         <div class="card">
+        <div class="error-message">
+            <% unless @messages.nil? %>
+                <% @messages.each do |key, value| %>
+                    <% key = "Mobile number" if key.eql?(:phone_number) %>
+                    *<%= [key, value].join(' ').humanize %><br/>
+                <% end %>
+            <% end %>
+        </div>
         <p class="title">Registration</p>
         <form action="/user-register" method="POST">
             <input type="text" name="phone_number" placeholder="Mobile Number" required>

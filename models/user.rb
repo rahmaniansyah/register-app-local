@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
 
     user = User.new
     user.valid?
-    user.errors
+    user
     
 end

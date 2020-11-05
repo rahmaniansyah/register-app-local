@@ -1,13 +1,13 @@
 require './models/user'
 
 class UserController
-    def initialize (params)
-        @phone_number = params["phone_number"]
-        @first_name = params["first_name"]
-        @last_name = params["last_name"]
-        @dob = [params["year"], params["month"], params["date"]].join('-')
-        @gender = params["gender"]
-        @email = params["email"]
+    def initialize
+        # @phone_number = params["phone_number"]
+        # @first_name = params["first_name"]
+        # @last_name = params["last_name"]
+        # @dob = [params["year"], params["month"], params["date"]].join('-')
+        # @gender = params["gender"]
+        # @email = params["email"]
     end
     
     def index
@@ -15,29 +15,22 @@ class UserController
         renderer.result(binding)  
     end
 
-    def add_user
-        # user = User.new do |u|
-        #     u.phone_number = @phone_number
-        #     u.first_name = @first_name
-        #     u.last_name = @last_name
-        #     u.dob = @dob
-        #     u.gender = @gender
-        #     u.email = @email
-        #   end
-        @user = User.new(phone_number: @phone_number, first_name: @first_name, 
-                        last_name: @last_name, dob: @dob, gender: @gender, email: @email)
+    def add_user(params)
+       
+        # @user = User.new(phone_number: @phone_number, first_name: @first_name, 
+        #                 last_name: @last_name, dob: @dob, gender: @gender, email: @email)
+        dob = [params["year"], params["month"], params["date"]].join('-')
+        user = User.new(phone_number: params["phone_number"], first_name: params["first_name"], 
+                        last_name: params["last_name"], dob: dob, gender: params["gender"], email: params["email"])
         
         # @user.save!
-        if @user.valid?
-            @user.save!
+        if user.valid?
+            user.save!
             # redirect "/people/#{@person.id}"
         else
-            messages = @user.errors.messages
-            puts '---------'
-            puts messages
-            puts '---------'
-            # renderer = ERB.new(File.read("./views/index.erb"))
-            # renderer.result(binding)  
+            @messages = user.errors.messages
+            renderer = ERB.new(File.read("./views/index.erb"))
+            renderer.result(binding)
         end
     
         # user = User.new(params["phone_number"], params["first_name"], 
