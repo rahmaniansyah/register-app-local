@@ -9,8 +9,9 @@ body{
     justify-content: center;
 }
 
-.btn:hover{
-    cursor: pointer;
+.btn{
+    display: block;
+    text-align: center;
 }
 
 p.title{
@@ -20,4 +21,10 @@ p.title{
 .error-message{
     color: red;
     font-size: small;
+}
+
+fieldset{
+    margin: 0;
+    padding: 0;
+    border: 0;
 }

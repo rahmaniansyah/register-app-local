@@ -10,37 +10,42 @@
 <body>
     <div class="container">
         <div class="card">
-        <div class="error-message">
-            <% unless @messages.nil? %>
-                <% @messages.each do |key, value| %>
-                    <% key = "Mobile number" if key.eql?(:phone_number) %>
-                    *<%= [key, value].join(' ').humanize %><br/>
+            <div class="error-message">
+                <% unless @messages.nil? %>
+                    <% @messages.each do |key, value| %>
+                        <% key = "Mobile number" if key.eql?(:phone_number) %>
+                        *<%= [key, value].join(' ').humanize %><br/>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </div>
-        <p class="title">Registration</p>
-        <form action="/user-register" method="POST">
-            <input type="text" name="phone_number" placeholder="Mobile Number" required>
-            <input type="text" name="first_name" placeholder="First name" required>
-            <input type="text" name="last_name" placeholder="Last name" required>
+            </div>
+            <p class="title">Registration</p>
+            <fieldset <%= "disabled='disabled'" unless @user_valid.nil? %>>
+            <form action="/user-register" id="userRegister" method="POST">
+                <input type="text" name="phone_number" placeholder="Mobile Number" required>
+                <input type="text" name="first_name" placeholder="First name" required>
+                <input type="text" name="last_name" placeholder="Last name" required>
+                <div class="flex">
+                    <select class="select-input" id="month" name="month"></select>
+                    <select class="select-input" id="date" name="date"></select>
+                    <select class="select-input" id="year" name="year"></select>
+                </div> 
+                <div class="flex">
+                    <div class="input-radio">
+                        <input type="radio" id="male" name="gender" value="m">
+                        <label for="male">Male</label><br>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" id="female" name="gender" value="f">
+                        <label for="female">Female</label><br>
+                    </div>
+                </div>  
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="submit" value="Register" <%= 'disabled' unless @user_valid.nil? %>>
+            </form>
+            </fieldset>
             <div class="flex">
-                <select class="select-input" id="month" name="month"></select>
-                <select class="select-input" id="date" name="date"></select>
-                <select class="select-input" id="year" name="year"></select>
-            </div> 
-            <div class="flex">
-                <div class="input-radio">
-                    <input type="radio" id="male" name="gender" value="m">
-                    <label for="male">Male</label><br>
-                </div>
-                <div class="input-radio">
-                    <input type="radio" id="female" name="gender" value="f">
-                    <label for="female">Female</label><br>
-                </div>
-            </div>  
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="submit" value="Register">
-        </form>
+               <a class="btn" <%= "style='display: none;'" if @user_valid.nil? %>>Login</a>
+            </div>
         </div>
     </div>
 </body>

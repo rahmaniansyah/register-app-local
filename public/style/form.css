@@ -7,7 +7,7 @@ input[type=text],input[type=email], select {
 	box-sizing: border-box;
 }
   
-input[type=submit] {
+.btn, input[type=submit] {
 	width: 100%;
 	background-color: #7030a0;;
 	color: white;
@@ -17,8 +17,8 @@ input[type=submit] {
 	border-radius: 4px;
 	cursor: pointer;
 }
-  
-input[type=submit]:hover {
+
+.btn:hover, input[type=submit]:hover {
 	background-color: #542579;
 }
   
@@ -39,4 +39,9 @@ div.flex{
 
 .input-radio{
 	margin: 1em 2.5em 1em 0em;
+}
+
+input[type="submit"]:disabled {
+    background-color: #7030a08c;
+    pointer-events: none;
 }
