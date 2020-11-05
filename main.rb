@@ -8,7 +8,12 @@ get "/user-register" do
 
 end
 
+get "/home" do
+  renderer = ERB.new(File.read("./views/login_page.erb"))
+  renderer.result(binding)
+end
+
 post "/user-register" do
-    controller = UserController.new
-    controller.add_user(params)
+  controller = UserController.new
+  controller.add_user(params)
 end

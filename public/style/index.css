@@ -28,3 +28,13 @@ fieldset{
     padding: 0;
     border: 0;
 }
+
+.login-page-title{
+    text-align: center;
+    color: #92989c;
+    font-size: 22px;
+}
+
+.login-page-title .big-description{
+    font-size: 90px;
+}
